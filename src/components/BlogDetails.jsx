@@ -10,10 +10,10 @@ const BlogDetails = () => {
     data: blog,
     isLoading,
     error,
-  } = useFetch(`http://localhost:8005/blogs/${id}`);
+  } = useFetch(`http://localhost:8006/blogs/${id}`);
   const handleDelete = () => {
     const getRide = async () => {
-      await fetch(`http://localhost:8005/blogs/${id}`, { method: "DELETE" });
+      await fetch(`http://localhost:8006/blogs/${id}`, { method: "DELETE" });
       toast.success("blog deleted successfully")
       redirect("/")
     };

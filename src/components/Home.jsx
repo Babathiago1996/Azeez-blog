@@ -4,7 +4,7 @@ import BlogList from './BlogList'
 import { RingLoader } from 'react-spinners'
 
 const Home = () => {
-    const {data:blogs, isLoading, error}=useFetch(`http://localhost:8005/blogs`)
+    const {data:blogs, isLoading, error}=useFetch(`http://localhost:8006/blogs`)
 console.log(blogs)
   return (
     <div>
