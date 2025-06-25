@@ -14,7 +14,7 @@ const Create = () => {
     e.preventDefault();
     setIsLoading(true)
     const blog = { title, author, body };
-    fetch("http://localhost:8006/blogs", {
+    fetch("http://localhost:8007/blogs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(blog),
@@ -25,7 +25,7 @@ const Create = () => {
       return res.json()
     })
     .then(()=>{
-        toast.success("blog Added Successfully", {autoClose:99000, pauseOnHover:true, theme:"light"});
+        toast.success("blog Added Successfully", {autoClose:5000, pauseOnHover:true, theme:"light"});
 
         setIsLoading(false)
         setTitle("")
