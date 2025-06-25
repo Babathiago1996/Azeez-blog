@@ -14,30 +14,34 @@ const Create = () => {
     e.preventDefault();
     setIsLoading(true)
     const blog = { title, author, body };
-    fetch("http://localhost:8007/blogs", {
+    fetch("http://192.168.185.158:9000/blogs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(blog),
-    }).then((res) => {
-      if(!res.ok){
-        throw Error ("Failed to add blog")
-      }
-      return res.json()
     })
-    .then(()=>{
-        toast.success("blog Added Successfully", {autoClose:5000, pauseOnHover:true, theme:"light"});
+      .then((res) => {
+        if (!res.ok) {
+          throw Error("Failed to add blog");
+        }
+        return res.json();
+      })
+      .then(() => {
+        toast.success("blog Added Successfully", {
+          autoClose: 5000,
+          pauseOnHover: true,
+          theme: "light",
+        });
 
-        setIsLoading(false)
-        setTitle("")
-        setBody("")
-        setAuthor("broCode")
-
-    })
-    .catch((error)=>{
-        setIsLoading(false)
-        setError(error.message)
-toast.error("Error adding blog") 
-   })
+        setIsLoading(false);
+        setTitle("");
+        setBody("");
+        setAuthor("broCode");
+      })
+      .catch((error) => {
+        setIsLoading(false);
+        setError(error.message);
+        toast.error("Error adding blog");
+      });
    redirect("/");
 
   };
