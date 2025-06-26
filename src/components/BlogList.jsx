@@ -13,10 +13,10 @@ const BlogList = ({blogs, title}) => {
               className="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition-shadow duration-300"
             >
               <Link to={`/blogs/${blog.id}`}>
-                <h2 className="text-4xl font-semibold  text-gray-800 mb-2 ">
+                <h2 className="md:text-4xl font-semibold  text-gray-800 mb-2 text-[25px] ">
                   {blog.title}
                 </h2>
-                <p className="text-3xl text-gray-500 mb-4 ">by {blog.author}</p>
+                <p className="md:text-3xl text-gray-500 mb-4  text-2xl">by {blog.author}</p>
               </Link>
             </div>
           );
