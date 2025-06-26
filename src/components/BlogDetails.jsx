@@ -46,15 +46,15 @@ const BlogDetails = () => {
         </div>
       )}
       {blog && (
-        <article className="max-w-3xl mt-8 mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <article className="max-w-[900px] mt-8 mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="p-6">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4 hover:text-red-400 ">
+            <h1 className="text-[25px] md:text-4xl font-bold text-gray-900 mb-4 hover:text-red-400 ">
               {blog.title}
             </h1>
-            <h3 className="text-3xl text-gray-600 mb-4 ">
+            <h3 className="text-[22px] md:text-3xl text-gray-600 mb-4 ">
               Written by: <b>{blog.author}</b>
             </h3>
-            <div className="text-gray-700  text-2xl hover:bg-blue-100 transition-colors duration-300 p-2 rounded text-justify">
+            <div className="text-gray-700 text-[17px] md:text-2xl hover:bg-blue-100 transition-colors duration-300  rounded md:text-justify">
               {showFullText?blog.body : truncateText(blog.body)}
               {/* {show more/ show less button -only appear when needed} */}
               {blog.body.split(" ").length>300 && <button onClick={()=> setShowFullText(!showFullText)} className="ml-2 text-blue-600 font-medium hover:underline focus:outline-none">{showFullText? "show less":"show more"}</button>
