@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -9,6 +9,13 @@ const Create = () => {
   const [body, setBody] = useState("");
   const [error, setError]=useState(null)
   const redirect=useNavigate()
+  const formRef=useRef(null)
+  // scroll into view when component loads
+  useEffect(()=>{
+if(formRef.current){
+  formRef.current.scrollIntoView({behavior:"smooth", block:"start" })
+}
+  }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +56,7 @@ const Create = () => {
       }, 3500);
   };
   return (
-    <div className="max-w-[700px] mx-auto p-8 bg-white shadow-lg rounded-xl mt-10 ">
+    <div ref={formRef} className="max-w-[700px] mx-auto p-8 bg-white shadow-lg rounded-xl mt-10 ">
       <h1 className="text-4xl font-bold text-center mb-6 text-gray-800 ">
         Add New Blog
       </h1>
