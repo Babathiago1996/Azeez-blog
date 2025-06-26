@@ -8,7 +8,7 @@ const Home = () => {
       data: blogs,
       isLoading,
       error,
-    } = useFetch(`http://localhost:9002/blogs`);
+    } = useFetch(`https://azeez-blog.onrender.com/blogs`);
 console.log(blogs)
   return (
     <div>

@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start":"react-scripts start",
     "server": "json-server --watch data/db.json --port 9002",
     "dev": "vite",
     "build": "vite build",

@@ -14,7 +14,7 @@ const Create = () => {
     e.preventDefault();
     setIsLoading(true)
     const blog = { title, author, body };
-    fetch("http://localhost:9002/blogs", {
+    fetch("https://azeez-blog.onrender.com/blogs", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(blog),
