@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../Hooks/useFetch";
 import { RingLoader } from "react-spinners";
@@ -6,22 +6,36 @@ import { toast } from "react-toastify";
 
 const BlogDetails = () => {
   const { id } = useParams();
+  const [showFullText, setShowFullText]=useState(false)
   const {
     data: blog,
     isLoading,
     error,
   } = useFetch(`https://azeez-blog.onrender.com/blogs/${id}`);
+  const redirect = useNavigate();
+
   const handleDelete = () => {
     const getRide = async () => {
       await fetch(`https://azeez-blog.onrender.com/blogs/${id}`, {
         method: "DELETE",
       });
-      toast.success("blog deleted successfully")
-      redirect("/")
+      toast.error("blog deleted successfully", { autoClose: 3000 });
+
+      setTimeout(() => {
+        redirect("/");
+
+      }, 4000);
     };
     getRide()
   };
-  const redirect=useNavigate()
+  // function to truncate text to 200words
+  const truncateText=(text)=>{
+    const words=text.split(" ")
+    if(words.length>300){
+      return words.slice(0, 200).join(" ") + "..."
+    }
+    return text
+  }
 
   return (
     <div>
@@ -40,10 +54,16 @@ const BlogDetails = () => {
             <h3 className="text-3xl text-gray-600 mb-4 ">
               Written by: <b>{blog.author}</b>
             </h3>
-            <div className="text-gray-700  text-2xl hover:bg-blue-100 transition-colors duration-300 p-2 rounded text-justify">{blog.body}</div>
+            <div className="text-gray-700  text-2xl hover:bg-blue-100 transition-colors duration-300 p-2 rounded text-justify">
+              {showFullText?blog.body : truncateText(blog.body)}
+              {/* {show more/ show less button -only appear when needed} */}
+              {blog.body.split(" ").length>300 && <button onClick={()=> setShowFullText(!showFullText)} className="ml-2 text-blue-600 font-medium hover:underline focus:outline-none">{showFullText? "show less":"show more"}</button>
+              }
+              
+              </div>
             <button
               onClick={handleDelete}
-              className="mt-4 bg-red-500 w-[100px] text-[26px] rounded font-semibold"
+              className="mt-4 bg-red-500 w-[100px] text-[26px] rounded font-semibold "
             >
               DELETE
             </button>

@@ -21,7 +21,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
-    <ToastContainer position='top-center' autoClose={9000} />
+    <ToastContainer position='top-center' autoClose={5000} />
     </div>
   );
 }

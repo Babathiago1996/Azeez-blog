@@ -27,7 +27,7 @@ const Create = () => {
       })
       .then(() => {
         toast.success("blog Added Successfully", {
-          autoClose: 5000,
+          autoClose: 2500,
           pauseOnHover: true,
           theme: "light",
         });
@@ -42,8 +42,11 @@ const Create = () => {
         setError(error.message);
         toast.error("Error adding blog");
       });
-   redirect("/");
 
+      setTimeout(() => {
+        redirect("/");
+
+      }, 3500);
   };
   return (
     <div className="max-w-[700px] mx-auto p-8 bg-white shadow-lg rounded-xl mt-10 ">
@@ -53,7 +56,7 @@ const Create = () => {
       <form onSubmit={handleSubmit} className="space-y-6 ">
         <div>
           <label className="block text-2xl  font-medium text-gray-700 mb-1 ">
-           Blog Title
+            Blog Title
           </label>
           <input
             type="text"
@@ -67,7 +70,7 @@ const Create = () => {
 
         <div>
           <label className="block text-2xl  font-medium text-gray-700 mb-1 ">
-          Blog Author
+            Blog Author
           </label>
           <select
             value={author}
@@ -75,8 +78,9 @@ const Create = () => {
             className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 h-[60px]"
             required
           >
-            <option value="Azeez">Azeez</option>
             <option value="BroCode">BroCode</option>
+            <option value="Azeez">Azeez</option>
+
             <option value="Alabi">jane Doe</option>
             <option value="john smith">john smith</option>
             <option value="Emily Zhang">Emily Zhang</option>
